@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main()=>runApp(const MyApp());
 class MyApp extends StatefulWidget{const MyApp({super.key});State<MyApp> createState()=>_S();}
 class _S extends State<MyApp>{final name=TextEditingController();String result='';
-Widget build(c)=>MaterialApp(debugShowCheckedModeBanner:false,theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.indigo),home:Scaffold(appBar:AppBar(title:const Text('Student Name')),body:Padding(padding:const EdgeInsets.all(24),child:Column(children:[
+Widget build(c)=>MaterialApp(debugShowCheckedModeBanner:false,home:Scaffold(appBar:AppBar(title:const Text('Student Name')),body:Padding(padding:const EdgeInsets.all(24),child:Column(children:[
 TextField(controller:name,decoration:const InputDecoration(labelText:'Enter name')),
 ElevatedButton(onPressed:()=>setState(()=>result=name.text),child:const Text('Display')),
 Text(result,style:const TextStyle(fontSize:22))]))));}
