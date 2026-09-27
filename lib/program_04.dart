@@ -3,6 +3,6 @@ import 'package:flutter/material.dart';
 void main()=>runApp(const MyApp());
 class MyApp extends StatefulWidget{const MyApp({super.key});State<MyApp> createState()=>_S();}
 class _S extends State<MyApp>{String text='Original Text';
-Widget build(c)=>MaterialApp(debugShowCheckedModeBanner:false,theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.indigo),home:Scaffold(body:Center(child:Column(mainAxisSize:MainAxisSize.min,children:[
+Widget build(c)=>MaterialApp(debugShowCheckedModeBanner:false,home:Scaffold(body:Center(child:Column(mainAxisSize:MainAxisSize.min,children:[
 Text(text,style:const TextStyle(fontSize:24)),
 ElevatedButton(onPressed:()=>setState(()=>text='Text Changed!'),child:const Text('Change Text'))]))));}
