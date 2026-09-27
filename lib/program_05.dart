@@ -2,5 +2,5 @@
 import 'package:flutter/material.dart';
 void main()=>runApp(const MyApp());
 class MyApp extends StatelessWidget{const MyApp({super.key});
-Widget build(c)=>MaterialApp(home:Scaffold(appBar:AppBar(title:const Text('SnackBar')),body:Builder(builder:(c)=>Center(
+Widget build(c)=>MaterialApp(debugShowCheckedModeBanner:false,theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.indigo),home:Scaffold(appBar:AppBar(title:const Text('SnackBar')),body:Builder(builder:(c)=>Center(
 child:ElevatedButton(onPressed:()=>ScaffoldMessenger.of(c).showSnackBar(const SnackBar(content:Text('Button Pressed!'))),child:const Text('Show Message'))))));}
