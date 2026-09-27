@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main()=>runApp(const MyApp());
 class MyApp extends StatefulWidget{const MyApp({super.key});State<MyApp> createState()=>_S();}
 class _S extends State<MyApp>{final n=TextEditingController(),e=TextEditingController(),p=TextEditingController();String gender='Male',course='BCA',msg='';
-Widget build(c)=>MaterialApp(home:Scaffold(appBar:AppBar(title:const Text('Registration Form')),body:SingleChildScrollView(
+Widget build(c)=>MaterialApp(debugShowCheckedModeBanner:false,theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.indigo),home:Scaffold(appBar:AppBar(title:const Text('Registration Form')),body:SingleChildScrollView(
 padding:const EdgeInsets.all(20),child:Column(children:[
 TextField(controller:n,decoration:const InputDecoration(labelText:'Name')),
 TextField(controller:e,decoration:const InputDecoration(labelText:'Email')),
