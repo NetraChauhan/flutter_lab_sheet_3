@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main()=>runApp(const MyApp());
 class MyApp extends StatefulWidget{const MyApp({super.key});State<MyApp> createState()=>_S();}
 class _S extends State<MyApp>{final name=TextEditingController(),email=TextEditingController();String msg='';
-Widget build(c)=>MaterialApp(home:Scaffold(appBar:AppBar(title:const Text('Simple Form')),body:Padding(padding:const EdgeInsets.all(24),child:Column(children:[
+Widget build(c)=>MaterialApp(debugShowCheckedModeBanner:false,theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.indigo),home:Scaffold(appBar:AppBar(title:const Text('Simple Form')),body:Padding(padding:const EdgeInsets.all(24),child:Column(children:[
 TextField(controller:name,decoration:const InputDecoration(labelText:'Name')),
 TextField(controller:email,decoration:const InputDecoration(labelText:'Email')),
 Row(children:[ElevatedButton(onPressed:()=>setState(()=>msg='Submitted: ${name.text}'),child:const Text('Submit')),const SizedBox(width:10),
