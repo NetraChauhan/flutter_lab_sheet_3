@@ -20,7 +20,7 @@ class _S extends State<MyApp>{
   TextField(controller:n,decoration:d('Student name')),gap(),
   ...[a,b,c].asMap().entries.expand((e)=>[TextField(controller:e.value,keyboardType:TextInputType.number,decoration:d('Subject ${e.key+1} marks')),gap()]),
   FilledButton.icon(onPressed:result,icon:const Icon(Icons.calculate),label:const Text('Show Result')),gap(),
-  if(out.isNotEmpty)Container(padding:const EdgeInsets.all(18),decoration:BoxDecoration(color:Colors.indigo.shade50,borderRadius:BorderRadius.circular(12)),
+  if(out.isNotEmpty)Container(padding:const EdgeInsets.all(18),decoration:BoxDecoration(color:Colors.green.shade50,borderRadius:BorderRadius.circular(12)),
    child:Text(out,textAlign:TextAlign.center,style:const TextStyle(fontSize:19,fontWeight:FontWeight.bold)))
  ]);
 }
