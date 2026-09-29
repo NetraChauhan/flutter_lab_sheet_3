@@ -5,9 +5,7 @@ Widget page(String title,List<Widget> x)=>MaterialApp(
  theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.indigo),
  home:Scaffold(appBar:AppBar(title:Text(title),centerTitle:true),
  body:Align(alignment:Alignment.topCenter,child:SingleChildScrollView(padding:const EdgeInsets.fromLTRB(24,18,24,24),
- child:ConstrainedBox(constraints:const BoxConstraints(maxWidth:420),
- child:Card(elevation:3,child:Padding(padding:const EdgeInsets.all(24),
- child:Column(mainAxisSize:MainAxisSize.min,crossAxisAlignment:CrossAxisAlignment.stretch,children:x))))))));
+ child:ConstrainedBox(constraints:const BoxConstraints(maxWidth:420),child:Column(mainAxisSize:MainAxisSize.min,crossAxisAlignment:CrossAxisAlignment.stretch,children:x))))));
 InputDecoration d(String s)=>InputDecoration(labelText:s,border:const OutlineInputBorder());
 Widget gap()=>const SizedBox(height:14);
 
