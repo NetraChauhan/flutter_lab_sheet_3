@@ -1,12 +1,28 @@
 // 25. Student Result Application: name, 3 marks, total, percentage, and Pass/Fail.
 import 'package:flutter/material.dart';
+Widget page(String title,List<Widget> x)=>MaterialApp(
+ debugShowCheckedModeBanner:false,
+ theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.indigo),
+ home:Scaffold(appBar:AppBar(title:Text(title),centerTitle:true),
+ body:Center(child:SingleChildScrollView(padding:const EdgeInsets.all(24),
+ child:ConstrainedBox(constraints:const BoxConstraints(maxWidth:420),
+ child:Card(elevation:3,child:Padding(padding:const EdgeInsets.all(24),
+ child:Column(mainAxisSize:MainAxisSize.min,crossAxisAlignment:CrossAxisAlignment.stretch,children:x))))))));
+InputDecoration d(String s)=>InputDecoration(labelText:s,border:const OutlineInputBorder());
+Widget gap()=>const SizedBox(height:14);
+
 void main()=>runApp(const MyApp());
 class MyApp extends StatefulWidget{const MyApp({super.key});State<MyApp> createState()=>_S();}
-class _S extends State<MyApp>{final n=TextEditingController(),a=TextEditingController(),b=TextEditingController(),d=TextEditingController();String out='';
-double v(TextEditingController x)=>double.tryParse(x.text)??0;
-Widget build(c)=>MaterialApp(debugShowCheckedModeBanner:false,home:Scaffold(appBar:AppBar(title:const Text('Student Result')),body:Padding(
-padding:const EdgeInsets.all(20),child:Column(children:[
-TextField(controller:n,decoration:const InputDecoration(labelText:'Student Name')),
-...[a,b,d].asMap().entries.map((e)=>TextField(controller:e.value,keyboardType:TextInputType.number,decoration:InputDecoration(labelText:'Subject ${e.key+1} Marks'))),
-ElevatedButton(onPressed:(){double total=v(a)+v(b)+v(d),p=total/3;setState(()=>out='${n.text}\nTotal: $total\nPercentage: ${p.toStringAsFixed(2)}%\nResult: ${p>=40?'Pass':'Fail'}');},child:const Text('Show Result')),
-Text(out,textAlign:TextAlign.center)]))));}
+class _S extends State<MyApp>{
+ final n=TextEditingController(),a=TextEditingController(),b=TextEditingController(),c=TextEditingController();String out='';
+ double v(TextEditingController x)=>double.tryParse(x.text)??0;
+ void result(){double m1=v(a),m2=v(b),m3=v(c),total=m1+m2+m3,p=total/3;
+  setState(()=>out='${n.text}\nTotal: $total / 300\nPercentage: ${p.toStringAsFixed(2)}%\nResult: ${m1>=40&&m2>=40&&m3>=40?'PASS':'FAIL'}');}
+ Widget build(x)=>page('Student Result',[
+  TextField(controller:n,decoration:d('Student name')),gap(),
+  ...[a,b,c].asMap().entries.expand((e)=>[TextField(controller:e.value,keyboardType:TextInputType.number,decoration:d('Subject ${e.key+1} marks')),gap()]),
+  FilledButton.icon(onPressed:result,icon:const Icon(Icons.calculate),label:const Text('Show Result')),gap(),
+  if(out.isNotEmpty)Container(padding:const EdgeInsets.all(18),decoration:BoxDecoration(color:Colors.indigo.shade50,borderRadius:BorderRadius.circular(12)),
+   child:Text(out,textAlign:TextAlign.center,style:const TextStyle(fontSize:19,fontWeight:FontWeight.bold)))
+ ]);
+}

@@ -1,8 +1,23 @@
 // 4. Button changes the displayed text when pressed.
 import 'package:flutter/material.dart';
+Widget page(String title,List<Widget> x)=>MaterialApp(
+ debugShowCheckedModeBanner:false,
+ theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.indigo),
+ home:Scaffold(appBar:AppBar(title:Text(title),centerTitle:true),
+ body:Center(child:SingleChildScrollView(padding:const EdgeInsets.all(24),
+ child:ConstrainedBox(constraints:const BoxConstraints(maxWidth:420),
+ child:Card(elevation:3,child:Padding(padding:const EdgeInsets.all(24),
+ child:Column(mainAxisSize:MainAxisSize.min,crossAxisAlignment:CrossAxisAlignment.stretch,children:x))))))));
+InputDecoration d(String s)=>InputDecoration(labelText:s,border:const OutlineInputBorder());
+Widget gap()=>const SizedBox(height:14);
+
 void main()=>runApp(const MyApp());
 class MyApp extends StatefulWidget{const MyApp({super.key});State<MyApp> createState()=>_S();}
-class _S extends State<MyApp>{String text='Original Text';
-Widget build(c)=>MaterialApp(debugShowCheckedModeBanner:false,home:Scaffold(body:Center(child:Column(mainAxisSize:MainAxisSize.min,children:[
-Text(text,style:const TextStyle(fontSize:24)),
-ElevatedButton(onPressed:()=>setState(()=>text='Text Changed!'),child:const Text('Change Text'))]))));}
+class _S extends State<MyApp>{
+ String text='Press the button to change this text';
+ Widget build(x)=>page('Change Text',[
+  Container(padding:const EdgeInsets.all(18),decoration:BoxDecoration(color:Colors.indigo.shade50,borderRadius:BorderRadius.circular(12)),
+   child:Text(text,textAlign:TextAlign.center,style:const TextStyle(fontSize:20))),gap(),
+  FilledButton.icon(onPressed:()=>setState(()=>text='The text has changed!'),icon:const Icon(Icons.refresh),label:const Text('Change Text'))
+ ]);
+}

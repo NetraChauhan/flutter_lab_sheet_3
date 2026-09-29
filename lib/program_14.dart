@@ -1,8 +1,24 @@
 // 14. Checkbox to select whether the user agrees to the terms and conditions.
 import 'package:flutter/material.dart';
+Widget page(String title,List<Widget> x)=>MaterialApp(
+ debugShowCheckedModeBanner:false,
+ theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.indigo),
+ home:Scaffold(appBar:AppBar(title:Text(title),centerTitle:true),
+ body:Center(child:SingleChildScrollView(padding:const EdgeInsets.all(24),
+ child:ConstrainedBox(constraints:const BoxConstraints(maxWidth:420),
+ child:Card(elevation:3,child:Padding(padding:const EdgeInsets.all(24),
+ child:Column(mainAxisSize:MainAxisSize.min,crossAxisAlignment:CrossAxisAlignment.stretch,children:x))))))));
+InputDecoration d(String s)=>InputDecoration(labelText:s,border:const OutlineInputBorder());
+Widget gap()=>const SizedBox(height:14);
+
 void main()=>runApp(const MyApp());
 class MyApp extends StatefulWidget{const MyApp({super.key});State<MyApp> createState()=>_S();}
-class _S extends State<MyApp>{bool agree=false;
-Widget build(c)=>MaterialApp(debugShowCheckedModeBanner:false,home:Scaffold(body:Center(child:CheckboxListTile(
-title:const Text('I agree to the Terms and Conditions'),value:agree,onChanged:(v)=>setState(()=>agree=v??false),
-subtitle:Text(agree?'Agreed':'Not agreed')))));}
+class _S extends State<MyApp>{
+ bool agree=false;
+ Widget build(x)=>page('Terms & Conditions',[
+  CheckboxListTile(contentPadding:EdgeInsets.zero,title:const Text('I agree to the Terms and Conditions'),
+   subtitle:Text(agree?'You have agreed':'Please accept to continue'),value:agree,onChanged:(v)=>setState(()=>agree=v??false)),
+  gap(),
+  Icon(agree?Icons.check_circle:Icons.info_outline,size:44,color:agree?Colors.green:Colors.indigo)
+ ]);
+}
