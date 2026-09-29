@@ -2,12 +2,10 @@
 import 'package:flutter/material.dart';
 Widget page(String title,List<Widget> x)=>MaterialApp(
  debugShowCheckedModeBanner:false,
- theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.indigo),
+ theme:ThemeData(useMaterial3:true,colorSchemeSeed:Colors.green),
  home:Scaffold(appBar:AppBar(title:Text(title),centerTitle:true),
  body:Align(alignment:Alignment.topCenter,child:SingleChildScrollView(padding:const EdgeInsets.fromLTRB(24,18,24,24),
- child:ConstrainedBox(constraints:const BoxConstraints(maxWidth:420),
- child:Card(elevation:3,child:Padding(padding:const EdgeInsets.all(24),
- child:Column(mainAxisSize:MainAxisSize.min,crossAxisAlignment:CrossAxisAlignment.stretch,children:x))))))));
+ child:ConstrainedBox(constraints:const BoxConstraints(maxWidth:420),child:Container(padding:const EdgeInsets.all(22),decoration:BoxDecoration(color:Colors.green.shade50,borderRadius:BorderRadius.circular(18)),child:Column(mainAxisSize:MainAxisSize.min,crossAxisAlignment:CrossAxisAlignment.stretch,children:x)))))));
 InputDecoration d(String s)=>InputDecoration(labelText:s,border:const OutlineInputBorder());
 Widget gap()=>const SizedBox(height:14);
 
